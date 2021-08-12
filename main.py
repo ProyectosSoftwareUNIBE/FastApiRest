@@ -1,31 +1,12 @@
 from fastapi import FastAPI
 import uvicorn
-from Dtos.Dto import Dto
-from Dtos.Message import Message
 from fastapi.openapi.utils import get_openapi
-from typing import List
-import fastapi
+from controller.dto_controller import dto_route
+from controller.user_controller import user_route
 
 app = FastAPI(name="example")
-
-
-@app.get("/dto", response_model=List[Dto])
-def find() -> [Dto]:
-    return [Dto(id='1', name='intel i9', description='procesador de 8 nucleos y 16 hilos')]
-
-
-@app.get("/dto/{ide}", response_model=Dto)
-def findOne(ide: str) -> Dto:
-    return Dto(id=ide, name="dto", description='desc')
-
-
-@app.post("/dto", responses={202: {"model": Message}})
-def create(dto: Dto) -> fastapi.responses:
-    return fastapi.responses.JSONResponse(
-        content={'message': 'dto creado'},
-        status_code=202,
-        media_type="application/json"
-    )
+app.include_router(dto_route)
+app.include_router(user_route)
 
 
 def custom_openapi():
