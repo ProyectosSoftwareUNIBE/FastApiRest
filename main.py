@@ -3,10 +3,12 @@ import uvicorn
 from fastapi.openapi.utils import get_openapi
 from controller.dto_controller import dto_route
 from controller.user_controller import user_route
+from controller.area_controller import area_route
 
 app = FastAPI(name="example")
 app.include_router(dto_route)
 app.include_router(user_route)
+app.include_router(area_route)
 
 
 def custom_openapi():
