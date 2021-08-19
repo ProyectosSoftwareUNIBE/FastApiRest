@@ -1,3 +1,5 @@
 pip install fastapi
 pip intall uvicorn
 pip install motor
+pip install bcrypt
+pip install pyjwt

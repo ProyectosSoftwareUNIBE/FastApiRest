@@ -1,10 +1,9 @@
-from fastapi import APIRouter, status, Body
+from fastapi import APIRouter
 from model.area_model import AreaModel
 from config import db
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from typing import List
-from dto.message import Message
 
 area_route = APIRouter(
     prefix="/area",
